@@ -1,0 +1,47 @@
+import React from "react";
+
+const ProductInfo = ({ product, compact = false }) => {
+  return (
+    <div>
+      <h1
+        className={`font-bold ${
+          compact ? "text-lg" : "text-3xl"
+        } text-gray-900`}
+      >
+        {product.title}
+      </h1>
+
+      <p
+        className={`mt-2 text-gray-700 ${
+          compact ? "text-sm" : "leading-relaxed"
+        }`}
+      >
+        {compact
+          ? product.description.slice(0, 120) +
+            (product.description.length > 120 ? "…" : "")
+          : product.description}
+      </p>
+
+      <h2
+        className={`${
+          compact ? "text-xl" : "text-3xl"
+        } font-semibold mt-4 text-blue-600`}
+      >
+        ${product.price}
+      </h2>
+
+      <button
+        className={`mt-4 ${
+          compact ? "px-4 py-2" : "px-6 py-3"
+        } bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition`}
+        onClick={() =>
+          alert(`Add to Cart: ${product.title} — $${product.price}`)
+        }
+      >
+        Add to Cart
+      </button>
+    </div>
+  );
+};
+
+export default ProductInfo;
