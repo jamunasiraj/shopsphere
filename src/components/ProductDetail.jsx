@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ProductImage from "../components/ProductImage";
+import ProductInfo from "../components/ProductInfo";
 const Productdetail = ({ product: productProp = null, compact = false }) => {
   const { id } = useParams();
   const [product, setProduct] = useState(productProp);
