@@ -13,7 +13,7 @@ const NavBar = () => {
         <div className="flex h-20 items-center justify-between">
           <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
             {/* Logo */}
-            <Link className="flex flex-shrink-0 items-center mr-4" to="/">
+            <Link className="flex shrink-0 items-center mr-4" to="/">
               <TfiShoppingCartFull className="h-10 w-auto" />
 
               <span className="hidden md:block text-blue-600 text-2xl font-bold ml-2">
