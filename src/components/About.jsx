@@ -1,5 +1,4 @@
-import React from "react";
-
+import aboutimg from "../assets/images/aboutimg.jpg";
 const About = () => {
   return (
     <section className="bg-white py-16">
@@ -54,7 +53,7 @@ const About = () => {
           <div className="flex justify-center">
             <img
               className="rounded-xl shadow-lg w-full max-w-md"
-              src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0"
+              src={aboutimg}
               alt="About ShopSphere"
             />
           </div>
