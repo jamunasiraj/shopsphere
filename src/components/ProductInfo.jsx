@@ -1,7 +1,20 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ProductInfo = ({ product, compact = false }) => {
   const navigate = useNavigate();
+
+  // SAVE PRODUCT TO LOCAL STORAGE
+  const addToCart = () => {
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const updatedCart = [...existingCart, product];
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    alert(`Added to Cart: ${product.title}`);
+
+    navigate("/cart");
+  };
+
   return (
     <div>
       <h1
@@ -31,21 +44,22 @@ const ProductInfo = ({ product, compact = false }) => {
         ${product.price}
       </h2>
 
+      {/* ADD TO CART BUTTON */}
       <button
         className={`mt-4 ${
           compact ? "px-4 py-2" : "px-6 py-3"
         } bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition`}
-        onClick={() =>
-          alert(`Add to Cart: ${product.title} — $${product.price}`)
-        }
+        onClick={addToCart}
       >
         Add to Cart
       </button>
+
+      {/* GO BACK BUTTON */}
       <button
-        onClick={() => navigate(-1)} // Goes back to previous page
+        onClick={() => navigate(-1)}
         className={`${
           compact ? "px-4 py-2" : "px-6 py-3"
-        } bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition`}
+        } bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition ml-2`}
       >
         Go Back
       </button>
