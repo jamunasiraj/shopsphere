@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import favicon from "../assets/images/favicon.ico";
+import favicon from "../assets/images/favicon_io/favicon.ico";
 
 const FaviconSetter = () => {
   useEffect(() => {
