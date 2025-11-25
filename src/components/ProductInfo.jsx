@@ -1,6 +1,7 @@
-import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const ProductInfo = ({ product, compact = false }) => {
+  const navigate = useNavigate();
   return (
     <div>
       <h1
@@ -39,6 +40,14 @@ const ProductInfo = ({ product, compact = false }) => {
         }
       >
         Add to Cart
+      </button>
+      <button
+        onClick={() => navigate(-1)} // Goes back to previous page
+        className={`${
+          compact ? "px-4 py-2" : "px-6 py-3"
+        } bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition`}
+      >
+        Go Back
       </button>
     </div>
   );
