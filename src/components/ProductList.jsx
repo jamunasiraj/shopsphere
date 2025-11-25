@@ -34,6 +34,17 @@ const ProductList = () => {
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-16">
+      {/* Show Back to Categories only if category is selected */}
+      {category && (
+        <div className="mb-6">
+          <Link
+            to="/categories"
+            className="text-blue-600 hover:underline font-semibold"
+          >
+            &larr; Back to Categories
+          </Link>
+        </div>
+      )}
       <h1 className="text-4xl font-bold text-center mb-10">
         {category ? `Category: ${category}` : "Our Products"}
       </h1>
