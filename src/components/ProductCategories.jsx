@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Productcategories = () => {
+  //useState , for categories, loading, error
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  //  use Effect used for fetch categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -38,7 +40,8 @@ const Productcategories = () => {
           <Link
             key={category}
             to={`/categories/${category}`}
-            className="block border rounded-lg p-6 text-center bg-white hover:shadow-lg transition"
+            className="block border rounded-lg p-6 text-center bg-white 
+hover:bg-blue-100 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
           >
             <h2 className="capitalize text-xl font-semibold text-gray-800">
               {category}
