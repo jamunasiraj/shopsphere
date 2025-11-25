@@ -1,3 +1,4 @@
+import heroImg from "../assets/images/heroimg.jpg";
 const Hero = () => {
   return (
     <section className="bg-gray-100">
@@ -34,7 +35,7 @@ const Hero = () => {
         {/* Right Image Section */}
         <div className="flex justify-center">
           <img
-            src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f"
+            src={heroImg}
             alt="Shopping illustration"
             className="w-full max-w-md rounded-xl shadow-lg"
           />
