@@ -1,50 +1,71 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Productdetail from "./Productdetail";
-
+import { Link, useParams } from "react-router-dom";
 const ProductList = () => {
+  const { category } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // fetch product list once after mount
   useEffect(() => {
-    let cancel = false;
     const fetchProducts = async () => {
-      setLoading(true);
       try {
-        const res = await fetch("https://fakestoreapi.com/products");
-        if (!res.ok) throw new Error("Failed to fetch products");
-        const data = await res.json();
-        if (!cancel) setProducts(Array.isArray(data) ? data : []);
-      } catch (err) {
-        console.error("Error fetching products:", err);
+        setLoading(true);
+        const url = category
+          ? `https://fakestoreapi.com/products/category/${encodeURIComponent(
+              category
+            )}`
+          : "https://fakestoreapi.com/products";
+
+        const response = await fetch(url);
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
       } finally {
-        if (!cancel) setLoading(false);
+        setLoading(false);
       }
     };
-    fetchProducts();
-    return () => (cancel = true);
-  }, []);
 
-  if (loading)
-    return <h2 className="text-center mt-10 text-2xl">Loading products...</h2>;
-  if (!products.length)
-    return <h2 className="text-center mt-10 text-2xl">No products found</h2>;
+    fetchProducts();
+  }, [category]);
+
+  if (loading) {
+    return <h2 className="text-center mt-10 text-2xl">Loading Products...</h2>;
+  }
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-12">
-      <h2 className="text-2xl font-semibold mb-6">Products</h2>
+    <section className="max-w-7xl mx-auto px-6 py-16">
+      <h1 className="text-4xl font-bold text-center mb-10">
+        {category ? `Category: ${category}` : "Our Products"}
+      </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {products.map((product) => (
-          <Link
-            key={product.id}
-            to={`/shop/${product.id}`}
-            className="no-underline"
-          >
-            <Productdetail product={product} compact />
-          </Link>
-        ))}
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {products.length === 0 ? (
+          <p className="text-center col-span-full">No products found.</p>
+        ) : (
+          products.map((product) => (
+            <Link
+              key={product.id}
+              to={`/products/${product.id}`}
+              className="border rounded-xl p-4 shadow hover:shadow-lg transition bg-white"
+            >
+              <img
+                src={product.image}
+                alt={product.title}
+                className="h-48 mx-auto object-contain"
+              />
+
+              <h2 className="mt-4 font-semibold text-gray-800 line-clamp-2">
+                {product.title}
+              </h2>
+
+              <p className="text-blue-600 font-bold mt-2">${product.price}</p>
+
+              <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                View Details
+              </button>
+            </Link>
+          ))
+        )}
       </div>
     </section>
   );
