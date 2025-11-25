@@ -23,7 +23,7 @@ const NavBar = () => {
 
             {/* Nav Links */}
             <div className="md:ml-auto">
-              <div className="flex space-x-2">
+              <div className="flex flex-wrap justify-center md:justify-start gap-2 md:gap-0 md:space-x-2">
                 <NavLink to="/" className={linkStyle}>
                   Home
                 </NavLink>
