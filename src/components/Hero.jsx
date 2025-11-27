@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import heroImg from "../assets/images/heroimg.jpg";
 const Hero = () => {
   return (
@@ -17,18 +18,18 @@ const Hero = () => {
           </p>
 
           <div className="mt-8 flex gap-4">
-            <a
-              href="/shop"
+            <Link
+              to="/shop"
               className="bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700 transition"
             >
               Shop Now
-            </a>
-            <a
-              href="/categories"
+            </Link>
+            <Link
+              to="/categories"
               className="bg-white border border-gray-400 text-gray-700 px-6 py-3 rounded-lg text-lg hover:bg-gray-200 transition"
             >
               Browse Categories
-            </a>
+            </Link>
           </div>
         </div>
 
