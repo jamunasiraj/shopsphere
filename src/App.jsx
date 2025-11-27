@@ -20,7 +20,6 @@ const App = () => {
       <Route path="/" element={<Mainlayout />}>
         {/* Public pages */}
         <Route index element={<HomePage />} />
-        <Route path="/about" element={<AboutPages />} />
         {/* Shop / Products */}
         <Route path="shop" element={<ProductPage />} />
         <Route path="products/:id" element={<ProductDetailPage />} />
@@ -35,15 +34,8 @@ const App = () => {
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     )
-    // createRoutesFromElements(<Route path="/test" element={<h1> Hello </h1>} />)
   );
   return <RouterProvider router={router} />;
 };
 
 export default App;
-
-// {/* Auth / Account */}
-// <Route path="login" element={<LoginPage />} />
-// <Route path="signup" element={<SignupPage />} />
-// <Route path="account" element={<AccountPage />} />
-// <Route path="orders" element={<OrdersPage />} />

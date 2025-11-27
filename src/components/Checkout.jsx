@@ -1,5 +1,5 @@
-// src/components/Checkout.jsx
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Checkout = () => {
   const [formData, setFormData] = useState({
@@ -37,6 +37,14 @@ const Checkout = () => {
 
   return (
     <div className="max-w-md mx-auto p-6">
+      <div className="mb-6">
+        <Link
+          to="/cart"
+          className="text-blue-600 hover:underline font-semibold"
+        >
+          &larr; Back to Cart
+        </Link>
+      </div>
       <h1 className="text-3xl font-bold mb-6">Checkout</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
